@@ -1,0 +1,37 @@
+services:
+  app:
+    container_name: springboot
+    image: spring-boot
+    restart: unless-stopped
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresqldb
+  postgresqldb:
+    container_name: postgresql
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=akram
+      - POSTGRES_USER=akram
+      - POSTGRES_DB=HomeTeam
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: unless-stopped
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: akram@pgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: akram
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin/data
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
