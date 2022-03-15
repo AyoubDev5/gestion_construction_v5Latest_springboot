@@ -28,7 +28,7 @@ public class Tache {
     private Date dateDebut;
     private Date dateFin;
     private String descriptionTache;
-    private Number nouveauPrix;
+    private String nouveauPrix;
 
     @ManyToOne(
             cascade = CascadeType.ALL

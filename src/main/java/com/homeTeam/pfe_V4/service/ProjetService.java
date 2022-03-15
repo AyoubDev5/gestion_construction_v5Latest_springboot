@@ -39,7 +39,7 @@ public class ProjetService {
         return "Projet removed !! " + idProjet;
     }
 
-    public Projet updateProduct(Projet projet) {
+    public Projet updateProjet(Projet projet) {
         Projet existingProduct = projetRepository.findById(
                 projet.getIdProjet()).orElse(null);
         existingProduct.setNomProjet(projet.getNomProjet());

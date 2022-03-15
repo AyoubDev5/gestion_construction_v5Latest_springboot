@@ -43,12 +43,12 @@ public class Empl {
             name = "tele",
             unique = true
     )
-    private Long tele;
-    @Column(
-            nullable = true,
-            length = 64
-    )
-    private String photos;
+    private String tele;
+    private int price;
+
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
+    private String image;
 
 
 

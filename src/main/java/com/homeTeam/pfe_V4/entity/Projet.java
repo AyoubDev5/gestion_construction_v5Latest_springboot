@@ -38,12 +38,12 @@ public class Projet {
     private Date dateFin;
 
 
-    @OneToMany(
-            cascade = CascadeType.ALL
-    )
-    @JoinColumn(
-            name = "projet_id",
-            referencedColumnName = "idProjet"
-    )
-    private List<Tache> tache;
+//    @OneToMany(
+//            cascade = CascadeType.ALL
+//    )
+//    @JoinColumn(
+//            name = "projet_id",
+//            referencedColumnName = "idProjet"
+//    )
+//    private List<Tache> tache;
 }

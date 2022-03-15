@@ -31,8 +31,8 @@ public class Materiel {
 
     private Integer idMateriel;
     private String type_materiel;
-    private Number prix_unitaire;
-    private String quantite;
+    private Integer prix_unitaire;
+    private Integer quantite;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
