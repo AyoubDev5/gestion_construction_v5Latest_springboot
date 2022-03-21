@@ -30,10 +30,6 @@ public class ProjetService {
         return projetRepository.findById(idProjet).orElse(null);
     }
 
-//    public Projet getProjetByName(String nom_Projet) {
-//        return projetRepository.findByName(nom_Projet);
-//    }
-
     public String deleteProjet(int idProjet) {
         projetRepository.deleteById(idProjet);
         return "Projet removed !! " + idProjet;

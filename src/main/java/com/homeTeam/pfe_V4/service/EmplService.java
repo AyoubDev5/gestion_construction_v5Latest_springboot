@@ -17,74 +17,70 @@ public class EmplService {
     @Autowired
     private EmplRepository emplRepository;
 
-    public void  saveProductToDB( MultipartFile file, String CNE, Date date_debut,
-                               Date date_fin, String tele, int price)
-    {
-        Empl e = new Empl();
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        if(fileName.contains(".."))
-        {
-            System.out.println("not a a valid file");
-        }
-        try {
-            e.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        e.setCNE(CNE);
-        e.setDate_debut(date_debut);
-        e.setDate_fin(date_fin);
-        e.setTele(tele);
-        e.setPrice(price);
-        emplRepository.save(e);
+    public Empl saveempl(Empl empl) {
+        return emplRepository.save(empl);
     }
 
+    public List<Empl> saveempls(List<Empl> empls) {
+        return emplRepository.saveAll(empls);
+    }
 
-
-    public List<Empl> getAllEmpl()
-    {
+    public List<Empl> getempls() {
         return emplRepository.findAll();
     }
 
+    public Empl getemplById(int idEmpl) {
+        return emplRepository.findById(idEmpl).orElse(null);
+    }
+
+    public String deleteEmpl(int idEmpl) {
+        emplRepository.deleteById(idEmpl);
+        return "Empl removed !! " + idEmpl;
+    }
+
+    public Empl updateEmpl(Empl empl) {
+        Empl existingProduct = emplRepository.findById(
+                empl.getIdEmpl()).orElse(null);
+        existingProduct.setCNE(empl.getCNE());
+        existingProduct.setDate_debut(empl.getDate_debut());
+        existingProduct.setDate_fin(empl.getDate_fin());
+        existingProduct.setTele(empl.getTele());
+        existingProduct.setImage(empl.getImage());
+        return emplRepository.save(existingProduct);
+    }
+}
 
 
 
-
-
-
-
-
-
-
-//    public Empl saveempl(Empl empl) {
-//        return emplRepository.save(empl);
+/////////////////////////////////////////
+//    public void  saveProductToDB( MultipartFile file, String CNE, Date date_debut,
+//                               Date date_fin, String tele, int price)
+//    {
+//        Empl e = new Empl();
+//        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+//        if(fileName.contains(".."))
+//        {
+//            System.out.println("not a a valid file");
+//        }
+//        try {
+//            e.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+//        e.setCNE(CNE);
+//        e.setDate_debut(date_debut);
+//        e.setDate_fin(date_fin);
+//        e.setTele(tele);
+//        e.setPrice(price);
+//        emplRepository.save(e);
 //    }
 //
-//    public List<Empl> saveempls(List<Empl> empls) {
-//        return emplRepository.saveAll(empls);
-//    }
 //
-//    public List<Empl> getempls() {
+//
+//    public List<Empl> getAllEmpl()
+//    {
 //        return emplRepository.findAll();
 //    }
 //
-//    public Empl getemplById(int idEmpl) {
-//        return emplRepository.findById(idEmpl).orElse(null);
-//    }
-//
-//    public String deleteEmpl(int idEmpl) {
-//        emplRepository.deleteById(idEmpl);
-//        return "Empl removed !! " + idEmpl;
-//    }
-//
-//    public Empl updateEmpl(Empl empl) {
-//        Empl existingProduct = emplRepository.findById(
-//                empl.getIdEmpl()).orElse(null);
-//        existingProduct.setCNE(empl.getCNE());
-//        existingProduct.setDate_debut(empl.getDate_debut());
-//        existingProduct.setDate_fin(empl.getDate_fin());
-//        existingProduct.setTele(empl.getTele());
-//        existingProduct.setImage(empl.getImage());
-//        return emplRepository.save(existingProduct);
-//    }
-}
+
+

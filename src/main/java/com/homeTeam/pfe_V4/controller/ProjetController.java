@@ -35,17 +35,6 @@ public class ProjetController {
         return projetService.getProductById(id);
     }
 
-//    @GetMapping("/product/{name}")
-//    public Projet findProjetByName(@PathVariable String name) {
-//        return projetService.getProjetByName(name);
-//    }
-
-//    @PutMapping("/updateProjet")
-//    public Projet updateProjet(@RequestBody Projet product) {
-//        return projetService.updateProjet(product);
-//    }
-
-
     @PutMapping("/updateProjet")
     public Projet PutUser(@RequestBody Projet projet) {
         Projet oldUser = projetRepository.findById(projet.getIdProjet()).orElse(null);

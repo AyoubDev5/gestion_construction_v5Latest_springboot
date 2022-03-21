@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -31,7 +30,7 @@ public class Materiel {
 
     private Integer idMateriel;
     private String type_materiel;
-    private Integer prix_unitaire;
+    private Double prix_unitaire;
     private Integer quantite;
 
     @ManyToMany(fetch = FetchType.LAZY)

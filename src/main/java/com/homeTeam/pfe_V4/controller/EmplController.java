@@ -15,6 +15,37 @@ public class EmplController {
     @Autowired
     private EmplService emplService;
 
+    @PostMapping("/addEmpl")
+    public Empl addProjet(@RequestBody Empl empl) {
+        return emplService.saveempl(empl);
+    }
+
+    @PostMapping("/addEmpls")
+    public List<Empl> addProjets(@RequestBody List<Empl> empls) {
+        return emplService.saveempls(empls);
+    }
+
+    @GetMapping("/Empls")
+    public List<Empl> findAllProjets() {
+        return emplService.getempls();
+    }
+
+    @GetMapping("/EmplById/{id}")
+    public Empl findProjetById(@PathVariable int id) {
+        return emplService.getemplById(id);
+    }
+
+    @PutMapping("/updateEmpl")
+    public Empl updateProjet(@RequestBody Empl empl) {
+        return emplService.updateEmpl(empl);
+    }
+
+    @DeleteMapping("/deleteEmpl/{id}")
+    public String deleteProjet(@PathVariable int id) {
+        return emplService.deleteEmpl(id);
+    }
+}
+
 //    @PostMapping("/addP")
 //    public void saveProduct(@RequestParam("file") MultipartFile file,
 //                              @RequestParam("cne") String CNE,
@@ -27,7 +58,7 @@ public class EmplController {
 //        emplService.saveProductToDB(file, CNE, date_debut, date_fin, tele, price );
 //    }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //    @PostMapping("/users/save")
 //    public RedirectView saveUser(User user,
@@ -44,35 +75,4 @@ public class EmplController {
 //
 //        return new RedirectView("/users", true);
 //  }
-    //////////////////////////////////////////////////////////////////////////////////////////////////
-
-//    @PostMapping("/addEmpl")
-//    public Empl addProjet(@RequestBody Empl empl) {
-//        return emplService.saveempl(empl);
-//    }
-//
-//    @PostMapping("/addEmpls")
-//    public List<Empl> addProjets(@RequestBody List<Empl> empls) {
-//        return emplService.saveempls(empls);
-//    }
-//
-//    @GetMapping("/Empls")
-//    public List<Empl> findAllProjets() {
-//        return emplService.getempls();
-//    }
-//
-//    @GetMapping("/EmplById/{id}")
-//    public Empl findProjetById(@PathVariable int id) {
-//        return emplService.getemplById(id);
-//    }
-//
-//    @PutMapping("/updateEmpl")
-//    public Empl updateProjet(@RequestBody Empl empl) {
-//        return emplService.updateEmpl(empl);
-//    }
-//
-//    @DeleteMapping("/deleteEmpl/{id}")
-//    public String deleteProjet(@PathVariable int id) {
-//        return emplService.deleteEmpl(id);
-//    }
-}
+//////////////////////////////////////////////////////////////////////////////////////////////////

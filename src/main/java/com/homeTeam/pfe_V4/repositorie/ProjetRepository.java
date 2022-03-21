@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProjetRepository extends JpaRepository<Projet, Integer> {
-//    Projet findByName(String nomProjet);
-
 }
