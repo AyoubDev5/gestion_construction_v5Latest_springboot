@@ -25,14 +25,12 @@ public class Tache {
             generator = "taches_id_sequence"
     )
     private Integer idTaches;
-    private Date dateDebut;
-    private Date dateFin;
+    private String dateDebut;
+    private String dateFin;
     private String descriptionTache;
     private String nouveauPrix;
 
-    @ManyToOne(
-            cascade = CascadeType.ALL
-    )
+    @ManyToOne
     @JoinColumn(
             name = "projet_id",
             referencedColumnName = "idProjet",

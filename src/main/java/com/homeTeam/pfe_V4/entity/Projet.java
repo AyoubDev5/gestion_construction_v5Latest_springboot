@@ -34,8 +34,8 @@ public class Projet {
 
     private Integer idProjet;
     private String nomProjet;
-    private Date dateDebut;
-    private Date dateFin;
+    private String dateDebut;
+    private String dateFin;
 
 
 //    @OneToMany(

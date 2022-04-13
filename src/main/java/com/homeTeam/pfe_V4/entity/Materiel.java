@@ -33,30 +33,43 @@ public class Materiel {
     private Double prix_unitaire;
     private Integer quantite;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "concerne",
-            joinColumns = {
-                    @JoinColumn(
-                            name = "id_Materiel",
-                            referencedColumnName = "idMateriel",
-                            foreignKey = @ForeignKey(
-                                    name = "materiel_id_fk"
-                            )
-                    )},
-            inverseJoinColumns = {
-                    @JoinColumn(
-                            name = "id_Taches",
-                            referencedColumnName = "idTaches",
-                            foreignKey = @ForeignKey(
-                                    name = "tache_id_fk"
-                            )
-                    )}
+    @ManyToOne
+            (
+            cascade = CascadeType.ALL
     )
-    private List<Tache> taches;
-    public void addTaches(Tache tache){
-        if(taches == null)
-            taches = new ArrayList<>();
-        taches.add(tache);
-    }
+    @JoinColumn(
+            name = "tache_id",
+            referencedColumnName = "idTaches",
+            foreignKey = @ForeignKey(
+                    name = "tache_id_fk"
+            )
+    )
+    private Tache tache;
+
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(
+//            name = "concerne",
+//            joinColumns = {
+//                    @JoinColumn(
+//                            name = "id_Materiel",
+//                            referencedColumnName = "idMateriel",
+//                            foreignKey = @ForeignKey(
+//                                    name = "materiel_id_fk"
+//                            )
+//                    )},
+//            inverseJoinColumns = {
+//                    @JoinColumn(
+//                            name = "id_Taches",
+//                            referencedColumnName = "idTaches",
+//                            foreignKey = @ForeignKey(
+//                                    name = "tache_id_fk"
+//                            )
+//                    )}
+//    )
+//    private List<Tache> taches;
+//    public void addTaches(Tache tache){
+//        if(taches == null)
+//            taches = new ArrayList<>();
+//        taches.add(tache);
+ //   }
 }

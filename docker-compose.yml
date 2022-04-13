@@ -16,10 +16,10 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=akram
-      - POSTGRES_USER=akram
+      - POSTGRES_USER=esaaidi
       - POSTGRES_DB=HomeTeam
     volumes:
-      - local_pgdata:/var/lib/postgresql/data
+      - pg_data:/var/lib/postgresql/data
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin4_container
@@ -30,8 +30,8 @@ services:
       PGADMIN_DEFAULT_EMAIL: akram@pgadmin.com
       PGADMIN_DEFAULT_PASSWORD: akram
     volumes:
-      - pgadmin-data:/var/lib/pgadmin/data
+      - pg-admin-data:/var/lib/pgadmin/data
 
 volumes:
-  local_pgdata:
-  pgadmin-data:
+  pg_data:
+  pg-admin-data:

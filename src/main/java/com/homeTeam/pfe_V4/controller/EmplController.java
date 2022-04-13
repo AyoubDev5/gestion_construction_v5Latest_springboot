@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class EmplController {
     @Autowired
     private EmplService emplService;
@@ -36,7 +37,7 @@ public class EmplController {
     }
 
     @PutMapping("/updateEmpl")
-    public Empl updateProjet(@RequestBody Empl empl) {
+    public Empl updateEmpl(@RequestBody Empl empl) {
         return emplService.updateEmpl(empl);
     }
 

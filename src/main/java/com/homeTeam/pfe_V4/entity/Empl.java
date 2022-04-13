@@ -5,9 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
+
+
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Data
 @Builder
@@ -20,10 +23,11 @@ public class Empl {
     @Id
     @SequenceGenerator(
             name = "empl_id_sequence",
-            sequenceName = "empl_id_sequence"
+            sequenceName = "empl_id_sequence",
+            allocationSize = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
+            strategy = SEQUENCE,
             generator = "empl_id_sequence"
     )
 
@@ -35,8 +39,10 @@ public class Empl {
             unique = true
     )
     private String CNE;
-    private Date date_debut;
-    private Date date_fin;
+    private String lname;
+    private String fname;
+    private String date_debut;
+    private String date_fin;
     @Column(
             name = "tele",
             unique = true
@@ -44,36 +50,45 @@ public class Empl {
     private String tele;
     private int price;
 
-    @Lob
-    @Column(columnDefinition = "MEDIUMBLOB")
     private String image;
 
-
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "travailler",
-            joinColumns = {
-                    @JoinColumn(
-                            name = "id_Empl",
-                            referencedColumnName = "idEmpl",
-                            foreignKey = @ForeignKey(
-                                    name = "empl_id_fk"
-                            )
-                    )},
-            inverseJoinColumns = {
-                    @JoinColumn(
-                            name = "id_Taches",
-                            referencedColumnName = "idTaches",
-                            foreignKey = @ForeignKey(
-                                    name = "tache_id_fk"
-                            )
-                    )}
+    @ManyToOne(
+            cascade = CascadeType.ALL
     )
-    private List<Tache> taches;
-    public void addTaches(Tache tache){
-        if(taches == null)
-            taches = new ArrayList<>();
-        taches.add(tache);
-    }
+    @JoinColumn(
+            name = "tache_id",
+            referencedColumnName = "idTaches",
+            foreignKey = @ForeignKey(
+                    name = "tache_id_fk"
+            )
+    )
+    private Tache tache;
+
+
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(
+//            name = "travailler",
+//            joinColumns = {
+//                    @JoinColumn(
+//                            name = "id_Empl",
+//                            referencedColumnName = "idEmpl",
+//                            foreignKey = @ForeignKey(
+//                                    name = "empl_id_fk"
+//                            )
+//                    )},
+//            inverseJoinColumns = {
+//                    @JoinColumn(
+//                            name = "id_Taches",
+//                            referencedColumnName = "idTaches",
+//                            foreignKey = @ForeignKey(
+//                                    name = "tache_id_fk"
+//                            )
+//                    )}
+//    )
+//    private List<Tache> taches;
+//    public void addTaches(Tache tache){
+//        if(taches == null)
+//            taches = new ArrayList<>();
+//        taches.add(tache);
+//    }
 }
