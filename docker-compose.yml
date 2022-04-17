@@ -19,7 +19,7 @@ services:
       - POSTGRES_USER=esaaidi
       - POSTGRES_DB=HomeTeam
     volumes:
-      - pg_data:/var/lib/postgresql/data
+      - pg_postgres_data:/var/lib/postgresql/data
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin4_container
@@ -30,8 +30,8 @@ services:
       PGADMIN_DEFAULT_EMAIL: akram@pgadmin.com
       PGADMIN_DEFAULT_PASSWORD: akram
     volumes:
-      - pg-admin-data:/var/lib/pgadmin/data
+      - pg-admin-postg-data:/var/lib/pgadmin/data
 
 volumes:
-  pg_data:
-  pg-admin-data:
+  pg_postgres_data:
+  pg-admin-postg-data:

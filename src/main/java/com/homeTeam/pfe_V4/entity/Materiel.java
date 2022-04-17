@@ -33,10 +33,11 @@ public class Materiel {
     private Double prix_unitaire;
     private Integer quantite;
 
-    @ManyToOne
-            (
-            cascade = CascadeType.ALL
-    )
+    @ManyToOne()
+//            (
+//            cascade = CascadeType.ALL
+//    )
+//    @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(
             name = "tache_id",
             referencedColumnName = "idTaches",

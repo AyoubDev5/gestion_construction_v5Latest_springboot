@@ -32,13 +32,10 @@ public class Empl {
     )
 
     private Integer idEmpl;
-    @Column(
-            name = "cne",
-            nullable = false,
-            columnDefinition = "TEXT",
-            unique = true
-    )
-    private String CNE;
+//    @Column(
+//            name = "cne"
+//    )
+//    private String CNE;
     private String lname;
     private String fname;
     private String date_debut;
@@ -48,13 +45,15 @@ public class Empl {
             unique = true
     )
     private String tele;
+    private String gmail;
     private int price;
 
     private String image;
 
-    @ManyToOne(
-            cascade = CascadeType.ALL
-    )
+    @ManyToOne()
+//            (
+//            cascade = CascadeType.ALL
+//    )
     @JoinColumn(
             name = "tache_id",
             referencedColumnName = "idTaches",

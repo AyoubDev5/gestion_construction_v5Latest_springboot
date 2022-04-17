@@ -28,7 +28,8 @@ public class Tache {
     private String dateDebut;
     private String dateFin;
     private String descriptionTache;
-    private String nouveauPrix;
+    private Double nouveauPrix;
+
 
     @ManyToOne
     @JoinColumn(

@@ -38,14 +38,17 @@ public class EmplService {
         return "Empl removed !! " + idEmpl;
     }
 
-    public Empl updateEmpl(Empl empl) {
-        Empl existingProduct = emplRepository.findById(
-                empl.getIdEmpl()).orElse(null);
-        existingProduct.setCNE(empl.getCNE());
+    public Empl updateEmpl(int id,Empl empl) {
+        Empl existingProduct = emplRepository.findById(id).orElse(null);
+//        existingProduct.setCNE(empl.getCNE());
+        existingProduct.setFname(empl.getFname());
+        existingProduct.setLname(empl.getLname());
+        existingProduct.setGmail(empl.getGmail());
         existingProduct.setDate_debut(empl.getDate_debut());
         existingProduct.setDate_fin(empl.getDate_fin());
         existingProduct.setTele(empl.getTele());
         existingProduct.setImage(empl.getImage());
+        existingProduct.setPrice(empl.getPrice());
         return emplRepository.save(existingProduct);
     }
 }
