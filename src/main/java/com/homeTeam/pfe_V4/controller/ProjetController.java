@@ -35,9 +35,9 @@ public class ProjetController {
         return projetService.getProductById(id);
     }
 
-    @PutMapping("/updateProjet")
-    public Projet updateProjet(@RequestBody Projet projet) {
-        return projetService.updateProjet(projet);
+    @PutMapping("/updateProjetById/{id}")
+    public Projet updateProjet(@PathVariable int id,@RequestBody Projet projet) {
+        return projetService.updateProjet(id,projet);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -33,9 +33,8 @@ public class MaterielService {
         return "Projet removed !! " + idMateriel;
     }
 
-    public Materiel updateMateriel(Materiel materiel) {
-        Materiel existingProduct = materielRepository.findById(
-                materiel.getIdMateriel()).orElse(null);
+    public Materiel updateMateriel(int id,Materiel materiel) {
+        Materiel existingProduct = materielRepository.findById(id).orElse(null);
         existingProduct.setType_materiel(materiel.getType_materiel());
         existingProduct.setPrix_unitaire(materiel.getPrix_unitaire());
         existingProduct.setQuantite(materiel.getQuantite());

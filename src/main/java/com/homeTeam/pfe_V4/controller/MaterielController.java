@@ -33,9 +33,9 @@ public class MaterielController {
         return materielService.getmaterielById(id);
     }
 
-    @PutMapping("/updateMateriel")
-    public Materiel updateMateriel(@RequestBody Materiel  materiel) {
-        return materielService.updateMateriel(materiel);
+    @PutMapping("/updateMaterielById/{id}")
+    public Materiel updateMateriel(@PathVariable int id,@RequestBody Materiel  materiel) {
+        return materielService.updateMateriel(id,materiel);
     }
 
     @DeleteMapping("/deleteMateriel/{id}")

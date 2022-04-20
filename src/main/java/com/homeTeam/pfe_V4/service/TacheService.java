@@ -43,9 +43,8 @@ public class TacheService {
         return "Projet removed !! " + idTache;
     }
 
-    public Tache updateTache(Tache tache) {
-        Tache existingProduct = tacheRepository.findById(
-                tache.getIdTaches()).orElse(null);
+    public Tache updateTache(int id,Tache tache) {
+        Tache existingProduct = tacheRepository.findById(id).orElse(null);
         existingProduct.setDateDebut(tache.getDateDebut());
         existingProduct.setDateFin(tache.getDateFin());
         existingProduct.setDescriptionTache(tache.getDescriptionTache());

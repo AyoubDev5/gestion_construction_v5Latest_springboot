@@ -36,9 +36,9 @@ public class EmplController {
         return emplService.getemplById(id);
     }
 
-    @PutMapping("/updateEmpl/{id}")
-    public Empl updateEmpl(@PathVariable int id,@RequestBody Empl empl) {
-        return emplService.updateEmpl(id,empl);
+    @PutMapping("/updateEmpl")
+    public Empl updateEmpl(@RequestBody Empl empl) {
+        return emplService.updateEmpl(empl);
     }
 
     @DeleteMapping("/deleteEmpl/{id}")

@@ -43,9 +43,9 @@ public class TacheController {
         return tacheService.getTacheById(id);
     }
 
-    @PutMapping("/updateTache")
-    public Tache updateTache(@RequestBody Tache tache) {
-        return tacheService.updateTache(tache);
+    @PutMapping("/updateTacheById/{id}")
+    public Tache updateTache(@PathVariable int id,@RequestBody Tache tache) {
+        return tacheService.updateTache(id,tache);
     }
 
     @DeleteMapping("/deleteTache/{id}")

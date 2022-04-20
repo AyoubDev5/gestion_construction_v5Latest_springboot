@@ -1,6 +1,6 @@
 services:
   app:
-    container_name: springboot
+    container_name: springbootdocker
     image: spring-boot
     restart: unless-stopped
     build: ./
@@ -15,8 +15,8 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=akram
-      - POSTGRES_USER=esaaidi
+      - POSTGRES_PASSWORD=ayoub
+      - POSTGRES_USER=taqi
       - POSTGRES_DB=HomeTeam
     volumes:
       - pg_postgres_data:/var/lib/postgresql/data
@@ -27,8 +27,8 @@ services:
     ports:
       - "5050:80"
     environment:
-      PGADMIN_DEFAULT_EMAIL: akram@pgadmin.com
-      PGADMIN_DEFAULT_PASSWORD: akram
+      PGADMIN_DEFAULT_EMAIL: taqi@pgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: ayoub
     volumes:
       - pg-admin-postg-data:/var/lib/pgadmin/data
 
